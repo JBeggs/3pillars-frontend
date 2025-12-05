@@ -6,8 +6,8 @@ export default defineConfig(({ mode }) => {
   // Load env file based on `mode` in the current working directory.
   const env = loadEnv(mode, process.cwd(), '')
   
-  // Get API base URL from .env or use default
-  const apiBaseUrl = env.VITE_API_BASE_URL || 'http://192.168.1.100:8000'
+  // Get API base URL from .env or use production default
+  const apiBaseUrl = env.VITE_API_BASE_URL || 'https://3pillars.pythonanywhere.com'
   const port = parseInt(env.VITE_PORT || '3000', 10)
   const host = env.VITE_HOST || '0.0.0.0'
   

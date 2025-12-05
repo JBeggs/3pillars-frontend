@@ -1,6 +1,6 @@
 // API Configuration
 // Loads from .env file (VITE_API_BASE_URL)
-// Fallback to localhost if not set
+// Fallback to production URL if not set
 const getApiBaseUrl = () => {
   // Priority 1: .env file (VITE_API_BASE_URL)
   if (import.meta.env.VITE_API_BASE_URL) {
@@ -12,13 +12,8 @@ const getApiBaseUrl = () => {
     return url.endsWith('/') ? `${url}api` : `${url}/api`
   }
   
-  // Priority 2: Default based on environment
-  if (import.meta.env.DEV) {
-    return 'http://192.168.1.100:8000/api'  // Local network backend
-  }
-  
-  // Fallback to localhost
-  return 'http://localhost:8000/api'
+  // Priority 2: Production URL as default
+  return 'https://3pillars.pythonanywhere.com/api'
 }
 
 export const API_BASE_URL = getApiBaseUrl()
